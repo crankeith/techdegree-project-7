@@ -1,41 +1,52 @@
-import React from 'react';
+import React, { Component } from 'react';
 
+import GalleryItem from './GalleryItem'
 import NotFound from './NotFound'
 import Loading from './Loading'
 
-import {Consumer} from "./Context";
+import { GalleryContext } from "./Context";
 
-function Gallery(props){
-    return(
-        <div className="photo-container">
-            <h2>Results</h2>
-            <Consumer>
-                {({ loading }) => {
-                    if(loading){
-                        return <Loading />
-                    } else {
-                        return (
+class Gallery extends Component {
+
+    componentDidMount() {
+        const tag = this.props.match.params.tag;
+        if(tag){
+            this.context.actions.searchFlicker(tag);
+        } else if(this.context.searchResults.length < 1) {
+            let path = `/search/marvel`;
+            this.props.history.push(path);
+        }
+    }
+
+    render(){
+        const { loading, searchResults } = this.context;
+        const { tag } = this.props.match.params;
+
+        return(
+            <div className="photo-container">
+                <h2><hr />Results for: <hr /></h2>
+                <p className="tag">{ tag }</p>
+                <p>Click image to open original in new window/tab</p>
+                    {
+                        loading ?
+                            <Loading />
+                        :
                             <ul>
-                                {props.photos.length > 0 ?
-                                    props.photos.map( photo => {
+                                {searchResults.length > 0 ?
+                                    searchResults.map( photo => {
                                         return (
-                                            <li>
-                                                <a target="_blank" href={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`}>
-                                                    <img src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} alt=""/>
-                                                </a>
-                                            </li>
+                                            <GalleryItem key={photo.id} photo={ photo } />
                                         )
                                     })
                                     : <NotFound/>
                                 }
-
                             </ul>
-                        )
                     }
-                }}
-            </Consumer>
-        </div>
-    )
+            </div>
+        )
+    }
 }
+
+Gallery.contextType = GalleryContext;
 
 export default Gallery;

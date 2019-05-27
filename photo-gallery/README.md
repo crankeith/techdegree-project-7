@@ -1,3 +1,21 @@
+#Flickr Search App
+
+This application leverages the Plickr API and allows the user to search the Flicker public images based on keywords/tags.
+The technologies used are: 
+- REACT
+- React Router DOM
+- axios
+
+This is for the Unit 7 Project in my Techdegree at Treehouse. 
+
+##Extra Credit
+- I've added in a ton of additional styling and layout elements.
+- I've added in a route that handles unrecognized routes (404)
+- I've added in a component that renders when there are no search results
+- I've added in a loading indicator
+
+#Dev Notes
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

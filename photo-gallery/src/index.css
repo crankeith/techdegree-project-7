@@ -10,10 +10,62 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+header {
+  background-color: #438bbd;
+  color: white;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+h1 {
+  border-bottom: 1px solid white;
+  padding-bottom: 20px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  line-height: 75px;
+  text-transform: uppercase;
+  font-size: 3.5em;
+  letter-spacing: 3px;
+}
+
+h1 img {
+  max-width: 75px;
+  max-height: 75px;
+  margin-right: 30px;
+}
+
 h2 {
-  font-size: 2em;
-  margin: 52px 0 40px;
-  text-transform: capitalize;
+  font-size: 2.5em;
+  margin: 52px 0 0 0;
+  display: flex;
+  align-content: center;
+}
+
+h2 hr {
+  min-width: 30%;
+  height: 1px;
+  border: 0;
+  background: #3f4850;
+  margin: auto;
+}
+
+h2 + p {
+  margin-bottom:20px;
+  font-style: italic;
+  color: #3f4850;
+  font-size: 0.8em;
+}
+
+section {
+  background-color: #d7dbdf;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  padding: 20px;
+  font-size: 1.5em;
 }
 
 ul {
@@ -25,6 +77,18 @@ a {
   text-decoration: none;
 }
 
+.not-found a {
+  margin-top: 10px;
+  display: inline-block;
+  font-weight: bold;
+  color: #438bbd;
+  border: 1px solid #438bbd;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  padding: 10px 20px;
+}
+
 .search-form {
   max-width: 460px;
   display: flex;
@@ -33,9 +97,9 @@ a {
 
 .search-form button {
   outline: none;
-  background-color: #438bbd;
+  background-color: #275270;
   border: none;
-  padding: 0px 15px;
+  padding: 0 15px;
   border-radius: 0 0.35em 0.35em 0;
   cursor: pointer;
 }
@@ -58,7 +122,7 @@ input {
 
 .main-nav a {
   display: block;
-  background: #438bbd;
+  background: #275270;
   border-radius: 3px;
   padding: 5px;
   color: #fff;
@@ -67,7 +131,14 @@ input {
 .main-nav .active,
 .main-nav a:hover,
 .search-form button:hover {
-  background-color: #275270;
+  background-color: #3f4850;
+}
+
+.tag {
+  text-transform: capitalize;
+  color: deeppink;
+  margin: 0;
+  font-size:2em;
 }
 
 .photo-container ul {
@@ -76,6 +147,11 @@ input {
   justify-content: space-between;
   -ms-align-items: flex-start;
   align-items: flex-start;
+  padding: 20px;
+  border: 1px solid #438bbd;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
 }
 
 .photo-container ul li {
@@ -99,6 +175,16 @@ input {
   width: 100%;
 }
 
+#missingPage h1 {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+#missingPage p {
+  margin-bottom: 0;
+  font-size: 1.3em;
+}
+
 @media only screen and (max-width: 767px)  {
   body {
     padding-top: 2em;
@@ -115,13 +201,18 @@ input {
   }
 
   .container {
-    max-width: 960px;
+    max-width: 1000px;
     margin: auto;
   }
 
   .main-nav ul {
     display: flex;
     justify-content: center;
+  }
+  .main-nav li:first-child {
+    text-align: right;
+    font-weight: bold;
+    font-style: italic;
   }
 
   .main-nav li {

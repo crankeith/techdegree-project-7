@@ -11,10 +11,6 @@ export class Provider extends Component {
         loading: true
     };
 
-    componentDidMount() {
-        this.searchFlicker('cats');
-    }
-
     toggleLoading = () => {
         this.setState(prevState => {
             return {
@@ -28,8 +24,11 @@ export class Provider extends Component {
             this.toggleLoading();
         }
 
-        axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=${apiKey}&text=${searchText}`)
+        axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=${apiKey}&privacy_filter=1&per_page=24&text=${searchText}`, {
+            timeout: 10000
+        })
             .then(response => {
+                //console.log(response.data.photos.photo);
                 this.setState({
                     searchResults: response.data.photos.photo,
                 });
